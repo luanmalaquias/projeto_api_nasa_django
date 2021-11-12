@@ -1,0 +1,93 @@
+#mrpcontent {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0);
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+#roverschoices {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.roverimg{
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid #00000000;
+    transition: 0.2s;
+    filter: grayscale(80%);
+}
+
+.roverimg:hover{
+    border: 2px solid rgba(5, 255, 255);
+    transition: 0.2s;
+    filter: grayscale(0%);
+}
+
+#mrpcontentrovers {
+    position: relative;
+    background-color: white;
+    width: 80%;
+    margin: 0 auto;
+    height: auto;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-radius: 25px;
+}
+
+#solpicker{
+    text-align: center;
+}
+
+#solpicker{
+    font-family: "Nasalization";
+}
+
+#solpicker:hover,
+#solpicker:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff83;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+}
+
+.photodiv{
+    margin: 20 0 20 0;
+}
+.photoimg{
+    width: 500px;
+}
+
+#solpickerlabel{
+    font-family: "Nasalization";
+}
+
+@media screen and (max-width: 1000px) {
+    #roverschoices {
+        flex-direction: column;
+    }
+    .roverimg{
+        filter: grayscale(0%);
+        width: 100%;
+    }
+    #mrpcontentrovers {
+        width: 100%;
+    }
+    #solpickerlabel, #solpicker{
+        font-size: 60px;
+    }
+    #solpicker{
+        border: 3px solid black;
+    }
+    .mrpp{
+        font-size: 20px;
+        margin-bottom: 0px;
+    }
+    .photoimg{
+        width: 100%;
+    }
+}

@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Nasalization';
+    src: url(../font/nasalization-rg.ttf);
+}
+body{
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-family: 'Nasalization';
+    overflow: hidden;
+}
+
+img{
+    position: relative;
+    bottom: 0;
+    margin-top: 200px;
+}
+
+@media screen and (max-width: 1000px) {
+    body{
+        font-size: 50px;
+    }
+
+    img{
+        width: 500px;
+    }
+}

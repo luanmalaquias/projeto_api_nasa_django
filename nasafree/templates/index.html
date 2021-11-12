@@ -1,0 +1,54 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title translate="no">{% block title %}Nasa Open Api{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+    <link rel="icon" href="{% static 'img/nasa_icon.png' %}"/>
+</head>
+
+<body>
+
+    <header>
+        <a href="{% url 'home' %}">            
+            <button id="botao">
+                <i class="fa fa-home"></i>
+            </button>
+        </a>
+
+        <a href="{% url 'apod' %}">
+            <button id="botao" title="Astronomy Picture of the Day" translate="no">Apod</button>
+        </a>
+
+        <a href="{% url 'marsweather' %}">
+            <button id="botao" title="Mars Weather by Hover Curiosity" translate="no">MW</button>
+        </a>
+        
+        <a href="{% url 'mrp' %}">
+            <button id="botao" title="Mars Rover Photos" translate="no">MRP</button>
+        </a>
+
+        <a href="{% url 'trekimagery' %}">
+            <button id="botao" title="Trek Imagery" translate="no">Trek</button>
+        </a>
+
+        <a href="{% url 'nasasearch' %}">
+            <button id="botao" title="Nasa Search" translate="no">Search</button>
+        </a>
+
+        <a href="{% url 'crewmembers' %}">
+            <button id="botao" title="Crew Members" translate="no">Crew</button>
+        </a>
+        
+    </header>
+
+    <main>
+        {% block body %}
+        {% endblock %}
+    </main>
+
+</body>
+
+</html>

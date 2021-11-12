@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block title %}Mars Rover Photos View{% endblock %}
+
+{% block body %}
+
+<div id="mrpcontentrovers">
+
+    
+    <form method="POST">
+        {% csrf_token %}
+        <label for="solpicker" id="solpickerlabel">SOL: </label>
+        <input id="solpicker" type="number" min="1" max="{{ dias }}" name="sol" value={{ dados.0.sol }}>
+        <button id="apodsearchbtn"><i class="fa fa-angle-right"></i></button>
+    </form>
+    <h1>MARS PHOTOS</h1>
+
+    <br>
+    <p class="mrpp"><b>Rover: </b>{{dados.0.rover_name}}</p>
+    <p class="mrpp"><b>Data na terra:</b> {{dados.0.earth_date}}</p>
+    <p class="mrpp"><b>Data de lançamento:</b> {{dados.0.rover_launch_date}}</p>
+    <p class="mrpp"><b>Data de pouso:</b> {{dados.0.rover_landing_date}}</p>
+    <p class="mrpp"><b>Status do rover:</b> {{dados.0.rover_status}}</p><br>
+    <p class="mrpp">{{ dados.0.sol }}° dia do rover em marte</p>
+    {% for fotos in dados %}
+    <div class="photodiv">
+        <img class="photodivicon" src="{% static 'img/nasa_icon.png' %}" alt="nasa">
+        <img class="photodivicon" src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Mars_%28white_background%29.jpg" alt="mars">
+        <a href="{{ fotos.url }}" target="_blank">
+            <img class="photoimg" src="{{ fotos.url }}" alt="foto">
+        </a>
+        <p class="photodivp"><b>Photo ID:</b> {{fotos.id}}</p>
+        <p class="photodivp"><b>Camera ID:</b> <i>{{fotos.camera_id}}</i></p>
+        <p class="photodivp"><b>Camera name:</b> <i>{{fotos.camera_name}} / {{fotos.camera_full_name}}</i></p>
+
+    </div>
+    {% endfor %}
+
+    <a href="#">
+        <button id="apodsearchbtn" title="Voltar ao topo"><i class="fa fa-angle-up"></i></button>
+    </a>
+    
+</div>
+
+{% endblock %}

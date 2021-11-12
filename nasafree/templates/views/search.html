@@ -1,0 +1,66 @@
+{% extends "index.html" %}
+
+{% block title %}Nasa Search{% endblock %}
+
+{% block body %}
+
+{% if not pesquisa %}
+<div id="nasasearchcontent">
+    <h1 id="h1ns" translate="no">NASA SEARCH</h1>
+    <div id="divinputns">
+        <form method="GET">
+            <i class="fa fa-search" style="color: black;"></i>
+            <input id="itns" type="search" autocapitalize="off" spellcheck="false" autocomplete="off"
+                aria-autocomplete="both" title="Pesquisar" name="q">
+        </form>
+    </div>
+</div>
+
+{% else %}
+
+<div id="nasasearchcontent2">
+
+    <a href="{% url 'nasasearch' %}">
+        <h2 id="h2ns" translate="no">NASA SEARCH</h2>
+    </a>
+
+    <div id="divinputns2">
+        <form method="GET">
+            <i class="fa fa-search" style="color: black;"></i>
+            <input id="itns" type="search" autocapitalize="off" spellcheck="false" autocomplete="off"
+                aria-autocomplete="both" title="Pesquisar" name="q" value="{{ pesquisa }}">
+        </form>
+    </div>
+
+    {% if not dados %}
+    <div class="pesquisanasasearch">
+        <p class="descriptionns">Desculpe, sua pesquisa não trouxe resultados.</p>
+    </div>
+    {% endif %}
+
+    {% for item in dados %}
+    <div class="pesquisanasasearch">
+
+        <form method="POST">
+            {% csrf_token %}
+            <button class="btnns">
+                <input class="titlens" type="text" value="{{ item.data.0.title }}" readonly name="title">
+            </button>
+
+            {% if item.data.0.description_508 %}
+            <p class="descriptionns" maxlength="50">{{ item.data.0.description_508 }}</p>
+            {% else %}
+            <p class="descriptionns" maxlength="50">{{ item.data.0.description }}</p>
+            {% endif %}
+
+            <input id="indexns" type="text" name="index" value="{{ forloop.counter0 }}">
+            <p class="descriptionns">{{ item.data.0.date_created }}</p>
+        </form>  
+    </div>
+
+    {% endfor %}
+</div>
+
+{% endif %}
+
+{% endblock %}

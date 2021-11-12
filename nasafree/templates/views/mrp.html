@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block title %}Mars Rover Photos{% endblock %}
+
+{% block body %}
+
+<div id="mrpcontent">
+    <div id="roverschoices">
+        <a href="{% url 'mrpspirit' %}">
+            <img class="roverimg" src="{% static 'img/rover_spirit.png' %}" alt="spirit">
+        </a>
+        <a href="{% url 'mrpopportunity' %}">
+            <img class="roverimg" src="{% static 'img/rover_opportunity.png' %}" alt="opportunity">
+        </a>
+        <a href="{% url 'mrpcuriosity' %}">
+            <img class="roverimg" src="{% static 'img/rover_curiosity.png' %}" alt="curiosity">            
+        </a>
+    </div>
+</div>
+{% endblock %}

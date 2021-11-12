@@ -1,0 +1,17 @@
+#marsweathercuriosity {
+    margin: 0 auto;
+    width: 90%;
+    height: 90%;
+    text-align: center;
+}
+
+#iframemarsweather{
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+    #marsweathercuriosity {
+        width: 100%;
+    }
+}

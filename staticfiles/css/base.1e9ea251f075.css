@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'Nasalization';
+    src: url("../font/nasalization-rg.82987827f252.ttf");
+}
+body{
+    background-image: url("../img/fundo.b2ea824b63ea.jpg");
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+header{
+    width: 100%;
+    margin: 0 auto;
+    background-color: #00000000;
+    display: flex;
+    justify-content: center;        
+}
+main{
+    margin: 0 auto;
+}
+#botao{
+    background-color: #ffffff;            
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    width:121px;
+    height:30px;
+    border-top-right-radius: 20px;
+    text-align: center;            
+    font-size: 19px;
+    font-family: 'Nasalization';
+    outline: 0;
+    transition: 0.2s all;
+    margin: 2px;
+}
+#botao:hover{
+    width: 150px;
+    background-color: #6e18b4;
+    color: #ffffff;
+    transition: 0.2s all;
+    border-bottom-left-radius: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+    header{
+        overflow-x: scroll;
+        justify-content: inherit;
+    }
+    #botao{
+        height: 100px;
+        width: 200px;
+        font-size: 40px;
+        margin: 5px;
+        border-top-right-radius: 60px;
+        border-bottom-left-radius: 30px ;
+    }
+    #botao:hover{
+        width: 250px;
+    }
+}

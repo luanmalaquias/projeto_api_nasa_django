@@ -1,0 +1,41 @@
+#group-index{
+    position: relative;
+    margin: 35% auto 0 auto;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+h1{
+    font-size: 40px;
+    font-family: 'Nasalization';
+    margin: 0;
+}
+p{
+    font-family: 'Nasalization';
+    font-size: 12px;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+a:hover{
+    color: #186ebe;
+    transition: 0.2s all;
+}
+
+@media screen and (max-width: 1000px) {
+    #group-index{
+        margin: 100% auto 0 auto;
+        width: 90%;
+        flex-direction: column;
+    }
+    h1{
+        font-size: 90px;
+    }
+    p{
+        font-size: 30px;
+        margin-bottom: 50px;
+    }
+}

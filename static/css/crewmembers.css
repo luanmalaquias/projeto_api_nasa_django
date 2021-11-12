@@ -1,0 +1,47 @@
+#crememberscontent{
+    background: rgb(0,48,255);
+    background: radial-gradient(circle, rgba(0,48,255,1) 0%, rgba(0,0,0,1) 97%);
+    color: white;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+    overflow-x: auto;
+}
+#nameandphoto{
+    width: 100%;
+    margin: 0 auto;
+    position: absolute;
+    background-image: url(http://lidianopolis.pr.gov.br/img/loading.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20%;
+}
+#informations{       
+    margin: 50 20 20 20;
+    position: absolute;
+    text-align: left;
+}
+#photo{
+    border-radius: 10px;
+}
+#changephotobuttons{
+    position: relative;
+    margin-top: 10;
+}
+@media screen and (max-width: 1000px) {
+    #nameandphoto{
+        position: relative;
+    }
+    #photo{
+        margin-top: 100;
+        height: 1200px;
+        border-radius: 50px;
+    }
+    #informations {
+        text-align: center;
+        position: relative;
+    }
+}

@@ -1,0 +1,47 @@
+#mrpcontent {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0);
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+#roverschoices {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.roverimg{
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid #00000000;
+    transition: 0.2s;
+    filter: grayscale(80%);
+}
+
+.roverimg:hover{
+    border: 2px solid rgba(5, 255, 255);
+    transition: 0.2s;
+    filter: grayscale(0%);
+}
+
+#mrpcontent {
+    position: relative;
+    background-color: white;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-radius: 25px;
+}
+
+@media screen and (max-width: 1000px) {
+    #roverschoices {
+        flex-direction: column;
+    }
+    .roverimg{
+        filter: grayscale(0%)
+    }
+}

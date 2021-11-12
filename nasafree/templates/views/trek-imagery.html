@@ -1,0 +1,166 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block title %}Trek Imagery{% endblock %}
+
+{% block body %}
+
+<style>
+    
+</style>
+
+<div id="trekcontent">
+    <table id="trektable">
+        <tr>
+            <th>Marte</th>
+        </tr>
+        <tr>
+            <td>
+                <a class="atreck"
+                    href="https://api.nasa.gov/mars-wmts/catalog/Mars_Viking_MDIM21_ClrMosaic_global_232m.html"
+                    target="_blank">
+                    Mapa global
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a class="atreck"
+                    href="https://api.nasa.gov/mars-wmts/catalog/Mars_MGS_MOLA_DEM_mosaic_global_463m_8.html"
+                    target="_blank">
+                    Mapa global em escala de cinza
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a class="atreck"
+                    href="https://api.nasa.gov/mars-wmts/catalog/Mars_MGS_MOLA_ClrShade_merge_global_463m.html"
+                    target="_blank">
+                    Mapa global em escala de Hillshade
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a class="atreck" href="https://api.nasa.gov/mars-wmts/catalog/HRSC_Martian_east.html" target="_blank">
+                    Lado leste
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a class="atreck" href="https://api.nasa.gov/mars-wmts/catalog/MC11E_HRMOSCO_COL.html" target="_blank">
+                    Região de Oxia Palus (MC-11)
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a class="atreck" href="https://api.nasa.gov/mars-wmts/catalog/mars_pahrump_patch_8k_256m.html"
+                    target="_blank">
+                    Local de pouso do rover Curiosity
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a class="atreck" href="https://api.nasa.gov/mars-wmts/catalog/spirit_hirise_mosaic.html"
+                    target="_blank">
+                    Local de pouso do rover Spirit
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a class="atreck" href="https://api.nasa.gov/mars-wmts/catalog/opportunity_hirise_mosaic.html"
+                    target="_blank">
+                    Local de pouso do rover Opportunity
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a class="atreck"
+                    href="https://api.nasa.gov/mars-wmts/catalog/Mars_MO_THEMIS-IR-Day_mosaic_global_100m_v12_clon0_ly.html"
+                    target="_blank">
+                    Emissão infravermelha ao dia
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a class="atreck"
+                    href="https://api.nasa.gov/mars-wmts/catalog/Mars_MO_THEMIS-IR-Night_mosaic_60N60S_100m_v14_clon0_ly.html"
+                    target="_blank">
+                    Emissão infravermelha a noite
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a class="atreck" href="https://api.nasa.gov/mars-wmts/catalog/hrsc_mawrth_vallis.html" target="_blank">
+                    Vale Mawrth
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <th>Lua</th>
+        </tr>
+        <tr>
+            <td>
+                <a class="atreck" href="https://api.nasa.gov/vesta-wmts/catalog/global_LAMO.html" target="_blank">
+                    Mapa global
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a class="atreck"
+                    href="https://api.nasa.gov/vesta-wmts/catalog/Vesta_Dawn_HAMO_ClrShade_DLR_Global_48ppd_IAU.html"
+                    target="_blank">
+                    Escala de Hillshade
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a class="atreck"
+                    href="https://api.nasa.gov/vesta-wmts/catalog/Vesta_Dawn_HAMO_ClrShade_DLR_Global_48ppd_IAU.html"
+                    target="_blank">
+                    Escala de Hillshade
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a class="atreck"
+                    href="https://api.nasa.gov/vesta-wmts/catalog/Vesta_Dawn_HAMO_MinRatio_DLR_global_74ppd_IAU.html"
+                    target="_blank">
+                    Escala de MinRatio
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a class="atreck"
+                    href="https://api.nasa.gov/vesta-wmts/catalog/Vesta_Dawn_HAMO_Shade_DLR_Global_48ppd_IAU.html"
+                    target="_blank">
+                    Escala de Shade
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a class="atreck"
+                    href="https://api.nasa.gov/vesta-wmts/catalog/Vesta_Dawn_HAMO_TrueClr_DLR_global_74ppd.html"
+                    target="_blank">
+                    Escala de TrueClr
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+{% endblock %}

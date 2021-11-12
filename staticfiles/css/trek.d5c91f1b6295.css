@@ -1,0 +1,46 @@
+#trekcontent {
+    background-color: white;
+    text-align: center;
+    border-radius: 10px;
+    padding: 50 0 50 0;
+    width: 50%;
+    margin: 0 auto;
+}
+
+#trektable {
+    width: 500px;
+    margin: 0 auto;
+    font-family: "Nasalization";
+}
+
+#trektable td,
+th {
+    padding-left: 20;
+    padding-right: 20;
+    text-align: center;
+}
+
+#trektable th {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.295);
+}
+
+.atreck {
+    color: #186ebe;
+}
+
+.atreck:hover {
+    color: blue;
+    text-decoration: underline;
+}
+@media screen and (max-width: 1000px) {
+    #trekcontent {
+        width: 100%;
+    }
+    #trektable {
+        width: 900px;
+        font-size: 50px;
+    }
+    #trektable th {
+        border-bottom: 3px solid rgba(0, 0, 0, 0.295);
+    }
+}

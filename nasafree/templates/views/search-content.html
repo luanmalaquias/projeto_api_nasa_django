@@ -1,0 +1,53 @@
+{% extends "index.html" %}
+
+{% block title %}{{ dados.data.0.title }}{% endblock %}
+
+{% block body %}
+
+<div id="pesquisanasasearch2">
+    <div id="conteudonasasearch">
+
+        <h1>{{ dados.data.0.title }}</h1>
+        <p>{{ dados.data.0.date_created }}</p>
+
+        {% if audio %}
+        <br>
+        <audio controls autoplay>
+            <source src="{{ audio }}" type="audio/mp3">
+        </audio>
+        <br>
+        {% endif %}
+
+        <br>
+
+        <p id="descricaoconteudo">{{ dados.data.0.description }}</p>
+
+        {% if imagem %}
+        <br>
+        <a href="{{ imagem }}" target="_blank">
+            <img src="{{ imagem }}" alt="imagem" id="apodimg" width="70%">
+        </a>
+        <br>
+        {% endif %}
+
+        {% if video %}
+        <br>
+        <video id="apodvideo" controls>
+            <source src="{{ video }}" type="video/mp4">
+        </video>
+        <br>
+        {% endif %}
+
+        {% if dados.data.0.keywords %}
+        <br>
+        <p>Palavras chave: </p>
+            {% for keywords in dados.data.0.keywords %}
+            <p id="descricaoconteudo">{{ keywords }}</p>
+            {% endfor %}
+        <br>
+        {% endif %}
+
+    </div>
+</div>
+
+{% endblock %}

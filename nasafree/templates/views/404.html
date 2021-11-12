@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}404!{% endblock %}</title>
+    <link rel="icon" href="{% static 'img/nasa_icon.png' %}"/>
+    <link rel="stylesheet" href="{% static 'css/404.css' %}">
+</head>
+<body>
+    <p>Ops!</p>
+    <p>Parece que você está perdido.</p>
+    <img src="{% static 'img/man.jpg' %}" alt="">
+</body>
+</html>

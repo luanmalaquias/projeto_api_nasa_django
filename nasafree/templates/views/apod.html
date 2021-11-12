@@ -1,0 +1,59 @@
+{% extends "index.html" %}
+
+{% block title %}APOD{% endblock %}
+
+{% block body %}
+
+<div id="apodcontent">
+
+
+    <form method="POST">
+        {% csrf_token %}
+        <input id="datefield" type="date" name="data" min="1995-06-16" value="{{ dados.date|date:"Y-m-j" }}">
+        <button id="apodsearchbtn"><i class="fa fa-angle-right"></i></button>
+    </form>
+
+
+    <p id="apoddate" translate="no">{{dados.date|date:"j F, Y"}}</p>
+    <h1 id="apodtitle">{{dados.title}}</h1>
+    <p id="apodexplanation">{{dados.explanation}}</p>
+
+
+    {% if dados.media_type == 'image' %}
+    <a href="{{ dados.hdurl }}" target="_blank">
+        <img src="{{ dados.url }}" alt="apodimg" id="apodimg" width="70%">
+    </a>
+    {% endif %}
+
+
+    {% if dados.media_type == 'video' %}
+    <object id="apodvideo">
+        <param name="movie" value="{{ dados.url }}" />
+        <embed src="{{ dados.url }}" type="application/x-shockwave-flash"/>
+    </object>
+    {% endif %}
+</div>
+
+<script>
+    var today = new Date();
+    var h = today.getHours();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+    if (mm < 10) {
+        mm = '0' + mm
+    }
+
+    if(h >= 2){
+        today = yyyy + '-' + mm + '-' + dd;
+    }else{
+        today = yyyy + '-' + mm + '-' + (dd-1);
+    }
+    
+    document.getElementById("datefield").setAttribute("max", today);
+</script>
+
+{% endblock %}
