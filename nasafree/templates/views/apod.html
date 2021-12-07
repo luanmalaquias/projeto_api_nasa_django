@@ -2,37 +2,61 @@
 
 {% block title %}APOD{% endblock %}
 
-{% block body %}
+{% block content %}
 
-<div id="apodcontent">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <h1 class="font-nasa">APOD</h1>
+            <span>
+                A cada dia, uma imagem ou fotografia diferente de nosso fascinante universo é apresentada, junto com uma breve explicação escrita por um astrônomo profissional.
+            </span>
+        </div>
 
+        <div class="col">
 
-    <form method="POST">
-        {% csrf_token %}
-        <input id="datefield" type="date" name="data" min="1995-06-16" value="{{ dados.date|date:"Y-m-j" }}">
-        <button id="apodsearchbtn"><i class="fa fa-angle-right"></i></button>
-    </form>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-6 col-lg-4">
+                        <input class="form-control" id="datefield" type="date" name="data" min="1995-06-16"
+                            value="{{ dados.date|date:" Y-m-j" }}">
+                    </div>
+                    <div class="col-6 col-lg-8">
+                        <button class="btn btn-primary"><i class="bi bi-search"></i> Search</button>
+                    </div>
+                </div>
+            </form>
 
+            <p translate="no">{{dados.date|date:"j F, Y"}}</p>
 
-    <p id="apoddate" translate="no">{{dados.date|date:"j F, Y"}}</p>
-    <h1 id="apodtitle">{{dados.title}}</h1>
-    <p id="apodexplanation">{{dados.explanation}}</p>
+            <div class="row text-justify pt-sm-5 pt-lg-0">
 
+                <h1 class="font-size-3rm">{{dados.title}}</h1>
 
-    {% if dados.media_type == 'image' %}
-    <a href="{{ dados.hdurl }}" target="_blank">
-        <img src="{{ dados.url }}" alt="apodimg" id="apodimg" width="70%">
-    </a>
-    {% endif %}
+                <div class="col-lg-6">
+                    <p>{{dados.explanation}}</p>
+                </div>
 
+                <div class="col">
 
-    {% if dados.media_type == 'video' %}
-    <object id="apodvideo">
-        <param name="movie" value="{{ dados.url }}" />
-        <embed src="{{ dados.url }}" type="application/x-shockwave-flash"/>
-    </object>
-    {% endif %}
-</div>
+                    {% if dados.media_type == 'image' %}
+                    <a href="{{ dados.hdurl }}" target="_blank">
+                        <img src="{{ dados.url }}" alt="apodimg" class="w-100">
+                    </a>
+                    {% endif %}
+
+                    {% if dados.media_type == 'video' %}
+                    <object>
+                        <param name="movie" value="{{ dados.url }}" />
+                        <embed src="{{ dados.url }}" type="application/x-shockwave-flash" />
+                    </object>
+                    {% endif %}
+                </div>
+
+            </div>
+
+        </div>
+    </div>
 
 <script>
     var today = new Date();
@@ -47,13 +71,13 @@
         mm = '0' + mm
     }
 
-    if(h >= 2){
+    if (h >= 2) {
         today = yyyy + '-' + mm + '-' + dd;
-    }else{
-        today = yyyy + '-' + mm + '-' + (dd-1);
+    } else {
+        today = yyyy + '-' + mm + '-' + (dd - 1);
     }
-    
+
     document.getElementById("datefield").setAttribute("max", today);
 </script>
 
-{% endblock %}
+{% endblock content %}

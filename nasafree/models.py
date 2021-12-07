@@ -138,11 +138,15 @@ def getRequestNasaSearch(pesquisa):
     request = requests.get(f'https://images-api.nasa.gov/search?q={pesquisa}')
     json = request.json()['collection']['items']
 
-    for item in json:        
+    for item in json:
         data = item['data'][0]['date_created']
         item['data'][0]['date_created'] = fixDate(data)
 
     json.sort(reverse=True, key=ordenar)
+
+    for item in json:
+        data = item['data'][0]['date_created']
+        item['data'][0]['date_created'] = fixDateBrPattern(data)
 
     return json
 
@@ -176,6 +180,10 @@ def getContextNasaSearch(dados, index):
 
 def fixDate(data):
     data = f'{data[0:4]} {data[5:7]} {data[8:10]}'
+    return data
+
+def fixDateBrPattern(data):
+    data = f'{data[8:10]}/{data[5:7]}/{data[0:4]}'
     return data
 
 

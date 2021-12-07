@@ -4,18 +4,27 @@
 
 {% block title %}Mars Rover Photos{% endblock %}
 
-{% block body %}
+{% block content %}
 
-<div id="mrpcontent">
-    <div id="roverschoices">
+<div class="row">
+    <div class="col-12 text-center mb-5">
+        <h1 class="font-nasa">Mars Rover Photos</h1>
+        <span>Todas as imagens coletadas pelos rovers Spirit, Opportunity e Curiosity da NASA em Marte.</span>
+    </div>
+    <h3 class="text-center">Selecione o Rover</h3>
+    <div class="mb-sm-4 col-lg-4">
         <a href="{% url 'mrpspirit' %}">
-            <img class="roverimg" src="{% static 'img/rover_spirit.png' %}" alt="spirit">
+            <img class="w-100" src="{% static 'img/rover_spirit.png' %}" alt="spirit">
         </a>
+    </div>
+    <div class="mb-sm-4 col-lg-4">
         <a href="{% url 'mrpopportunity' %}">
-            <img class="roverimg" src="{% static 'img/rover_opportunity.png' %}" alt="opportunity">
+            <img class="w-100" src="{% static 'img/rover_opportunity.png' %}" alt="opportunity">
         </a>
+    </div>
+    <div class="mb-sm-4 col-lg-4">
         <a href="{% url 'mrpcuriosity' %}">
-            <img class="roverimg" src="{% static 'img/rover_curiosity.png' %}" alt="curiosity">            
+            <img class="w-100" src="{% static 'img/rover_curiosity.png' %}" alt="curiosity">            
         </a>
     </div>
 </div>

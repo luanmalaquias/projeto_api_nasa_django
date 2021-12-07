@@ -4,7 +4,6 @@ from django.conf import urls
 
 urlpatterns = [
     path('', home, name='home'),
-    path("apod/", apod, name='apod'),
     path("marsweather/", marsWeather, name="marsweather"),
     path("mrp/", mrp, name='mrp'),
     path("mrp/spirit/", mrpspirit, name='mrpspirit'),

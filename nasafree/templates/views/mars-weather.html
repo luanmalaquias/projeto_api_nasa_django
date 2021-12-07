@@ -2,10 +2,20 @@
 
 {% block title %}Mars Weather{% endblock %}
 
-{% block body %}
+{% block content %}
 
-<div id="marsweathercuriosity">
-    <iframe id="iframemw" src='https://mars.nasa.gov/layout/embed/image/mslweather/' scrolling='no' frameborder='0'></iframe>
+<style>
+    @media screen and (max-width: 1000px) {
+        #iframe-mars-weather{
+            width: 800px !important;
+            height: 600px !important;
+            font-size: 2rem;
+        }
+    }
+</style>
+
+<div class="col h-sm-75 h-100">
+    <iframe id="iframe-mars-weather" class="w-100 h-100" src='https://mars.nasa.gov/layout/embed/image/mslweather/' scrolling='no' frameborder='0'></iframe>
 </div>
 
 {% endblock %}

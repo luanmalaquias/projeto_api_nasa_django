@@ -2,52 +2,50 @@
 
 {% block title %}{{ dados.data.0.title }}{% endblock %}
 
-{% block body %}
+{% block content %}
 
-<div id="pesquisanasasearch2">
-    <div id="conteudonasasearch">
+<div class="row">
+    <h1>{{ dados.data.0.title }}</h1>
+    <p>{{ dados.data.0.date_created }}</p>
 
-        <h1>{{ dados.data.0.title }}</h1>
-        <p>{{ dados.data.0.date_created }}</p>
+    <div class="col-lg-6">
+        <p>{{ dados.data.0.description }}</p>
+    </div>
 
-        {% if audio %}
-        <br>
+    {% if imagem %}
+    <div class="col-lg-6">
+        <a href="{{ imagem }}" target="_blank">
+            <img src="{{ imagem }}" alt="imagem" class="w-100">
+        </a>
+    </div>
+    {% endif %}
+
+    {% if audio %}
+    <div class="col-lg-6">
         <audio controls autoplay>
             <source src="{{ audio }}" type="audio/mp3">
         </audio>
-        <br>
-        {% endif %}
+    </div>
+    {% endif %}
 
-        <br>
-
-        <p id="descricaoconteudo">{{ dados.data.0.description }}</p>
-
-        {% if imagem %}
-        <br>
-        <a href="{{ imagem }}" target="_blank">
-            <img src="{{ imagem }}" alt="imagem" id="apodimg" width="70%">
-        </a>
-        <br>
-        {% endif %}
-
-        {% if video %}
-        <br>
-        <video id="apodvideo" controls>
+    {% if video %}
+    <div class="col-12 text-center mt-3">
+        <video controls>
             <source src="{{ video }}" type="video/mp4">
         </video>
-        <br>
-        {% endif %}
-
-        {% if dados.data.0.keywords %}
-        <br>
-        <p>Palavras chave: </p>
-            {% for keywords in dados.data.0.keywords %}
-            <p id="descricaoconteudo">{{ keywords }}</p>
-            {% endfor %}
-        <br>
-        {% endif %}
-
     </div>
+    {% endif %}
+
+    {% if dados.data.0.keywords %}
+    <div class="col-lg-6">
+        <span>Palavras chave: </span>
+        {% for keywords in dados.data.0.keywords %}
+        <span>{{ keywords }} | </span>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+
 </div>
 
 {% endblock %}

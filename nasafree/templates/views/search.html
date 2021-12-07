@@ -2,65 +2,113 @@
 
 {% block title %}Nasa Search{% endblock %}
 
-{% block body %}
+{% block content %}
 
 {% if not pesquisa %}
-<div id="nasasearchcontent">
-    <h1 id="h1ns" translate="no">NASA SEARCH</h1>
-    <div id="divinputns">
-        <form method="GET">
-            <i class="fa fa-search" style="color: black;"></i>
-            <input id="itns" type="search" autocapitalize="off" spellcheck="false" autocomplete="off"
-                aria-autocomplete="both" title="Pesquisar" name="q">
-        </form>
-    </div>
+
+<div class="row text-center pt-5 mt-5">
+    <h1 class="font-nasa font-size-3rm">NASA LIBRARY</h1>
+    <form method="GET">
+        <div class="offset-lg-2 offset-sm-0 col-12 col-lg-8 py-sm-5 p-lg-5">
+            <input id="pesquisa" class="form-control" type="search" autocapitalize="off" spellcheck="false"
+                autocomplete="off" aria-autocomplete="both" title="Pesquisar" name="q">
+        </div>
+    </form>
 </div>
+
 
 {% else %}
 
-<div id="nasasearchcontent2">
 
-    <a href="{% url 'nasasearch' %}">
-        <h2 id="h2ns" translate="no">NASA SEARCH</h2>
+<div class="row">
+    <a href="{% url 'nasasearch' %}" class="text-decoration-none text-white">
+        <h2 translate="no" class="font-nasa">NASA LIBRARY</h2>
     </a>
+</div>
 
-    <div id="divinputns2">
-        <form method="GET">
-            <i class="fa fa-search" style="color: black;"></i>
-            <input id="itns" type="search" autocapitalize="off" spellcheck="false" autocomplete="off"
-                aria-autocomplete="both" title="Pesquisar" name="q" value="{{ pesquisa }}">
-        </form>
-    </div>
 
-    {% if not dados %}
-    <div class="pesquisanasasearch">
-        <p class="descriptionns">Desculpe, sua pesquisa não trouxe resultados.</p>
+<div class="row pb-5">
+    <form method="GET">
+        <div class="col-lg-4">
+            <input id="pesquisa" class="form-control" type="search" autocapitalize="off" spellcheck="false"
+                autocomplete="off" aria-autocomplete="both" title="Pesquisar" name="q" value="{{ pesquisa }}">
+        </div>
+    </form>
+</div>
+
+
+{% if not dados %}
+<div class="row">
+    <p>Desculpe, sua pesquisa não encontrou resultados.</p>
+</div>
+{% endif %}
+
+
+{% for item in dados %}
+
+<div class="row mb-3">
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-link text-start p-0 input-title" value="{{item.data.0.title }}" readonly>
+        <input type="number" class="d-none" value="{{ forloop.counter0 }}" name="index">
+    </form>
+
+    <p>{{ item.data.0.date_created }}</p>
+
+    {% if item.links.0.href %}
+    <div class="col-lg-2">
+        <img src="{{item.links.0.href}}" alt="thumb" class="w-100 mb-3">
     </div>
     {% endif %}
 
-    {% for item in dados %}
-    <div class="pesquisanasasearch">
-
-        <form method="POST">
-            {% csrf_token %}
-            <button class="btnns">
-                <input class="titlens" type="text" value="{{ item.data.0.title }}" readonly name="title">
-            </button>
-
-            {% if item.data.0.description_508 %}
-            <p class="descriptionns" maxlength="50">{{ item.data.0.description_508 }}</p>
-            {% else %}
-            <p class="descriptionns" maxlength="50">{{ item.data.0.description }}</p>
-            {% endif %}
-
-            <input id="indexns" type="text" name="index" value="{{ forloop.counter0 }}">
-            <p class="descriptionns">{{ item.data.0.date_created }}</p>
-        </form>  
+    {% if item.data.0.description_508 %}
+    <div class="col-lg-10">
+        <p class="descricao">{{ item.data.0.description_508 }}</p>
     </div>
-
-    {% endfor %}
+    {% else %}
+    <div class="col-lg-10">
+        <p class="descricao">{{ item.data.0.description }}</p>
+    </div>
+    {% endif %}
+    <hr>
 </div>
 
+{% endfor %}
+
 {% endif %}
+
+<script>
+
+    function setMaxLengthText(className, max) {
+        var n = document.getElementsByClassName(className)
+        for (i = 0; i < n.length; i++) {
+            var text;
+            try {
+                text = n[i].value
+                if (text.length >= max) {
+                    text = text.substring(0, max)
+                    n[i].value = text + '...'
+                }
+            } catch (e) {
+                text = n[i].innerText
+                if (text.length >= max) {
+                    text = text.substring(0, max)
+                    n[i].innerText = text + '...'
+                }
+            }
+        }
+    }
+
+    setMaxLengthText('input-title', 30)
+    setMaxLengthText('descricao', 300)
+
+    let placeholder = "Digite algo para pesquisar: "
+    var pesquisas = ["James Webb", "Rover", "Mars", "Opportunity", "Curiosity", "Spirit", "Elon Musk", "SpaceX", "Falcon 9", "Rockets", "Apollo", "Podcasts"]
+
+    var r = Math.floor(Math.random() * pesquisas.length)
+    document.getElementById('pesquisa').placeholder = placeholder + pesquisas[r]
+
+</script>
 
 {% endblock %}

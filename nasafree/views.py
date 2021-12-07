@@ -6,11 +6,6 @@ from brain import ipfunc
 
 
 def home(request):
-    ipfunc.verifyIp(request)
-    return render(request, 'views/nasa-spacex.html')
-
-
-def apod(request):
     dados = Apod.getObjectOrRequest()
     buscaData = request.POST.get('data')
     if request.method == 'POST':

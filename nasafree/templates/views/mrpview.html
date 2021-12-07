@@ -4,44 +4,52 @@
 
 {% block title %}Mars Rover Photos View{% endblock %}
 
-{% block body %}
+{% block content %}
 
-<div id="mrpcontentrovers">
+<h1 translate="no">Mars Rover Photos ({{dados.0.rover_name}})</h1>
 
-    
+<div class="row py-4">
     <form method="POST">
         {% csrf_token %}
-        <label for="solpicker" id="solpickerlabel">SOL: </label>
-        <input id="solpicker" type="number" min="1" max="{{ dias }}" name="sol" value={{ dados.0.sol }}>
-        <button id="apodsearchbtn"><i class="fa fa-angle-right"></i></button>
+        <div class="form-group row">
+            <div class="col-6 col-lg-4">
+                <input class="form-control" type="number" placeholder="Sol" min="1" max="{{ dias }}" name="sol" value={{
+                    dados.0.sol }}>
+
+            </div>
+            <div class="col-6 col-lg-8">
+                <button class="btn btn-primary" translate="no"><i class="bi bi-search"></i> Search</button>
+            </div>
+        </div>
     </form>
-    <h1>MARS PHOTOS</h1>
+</div>
 
-    <br>
-    <p class="mrpp"><b>Rover: </b>{{dados.0.rover_name}}</p>
-    <p class="mrpp"><b>Data na terra:</b> {{dados.0.earth_date}}</p>
-    <p class="mrpp"><b>Data de lançamento:</b> {{dados.0.rover_launch_date}}</p>
-    <p class="mrpp"><b>Data de pouso:</b> {{dados.0.rover_landing_date}}</p>
-    <p class="mrpp"><b>Status do rover:</b> {{dados.0.rover_status}}</p><br>
-    <p class="mrpp">{{ dados.0.sol }}° dia do rover em marte</p>
+<div class="row pb-5">
+    <span><b>Data na terra:</b> {{dados.0.earth_date}}</span>
+    <span>{{ dados.0.sol }}° dia do rover em marte</span>
+</div>
+
+<div class="row">
+
     {% for fotos in dados %}
-    <div class="photodiv">
-        <img class="photodivicon" src="{% static 'img/nasa_icon.png' %}" alt="nasa">
-        <img class="photodivicon" src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Mars_%28white_background%29.jpg" alt="mars">
-        <a href="{{ fotos.url }}" target="_blank">
-            <img class="photoimg" src="{{ fotos.url }}" alt="foto">
-        </a>
-        <p class="photodivp"><b>Photo ID:</b> {{fotos.id}}</p>
-        <p class="photodivp"><b>Camera ID:</b> <i>{{fotos.camera_id}}</i></p>
-        <p class="photodivp"><b>Camera name:</b> <i>{{fotos.camera_name}} / {{fotos.camera_full_name}}</i></p>
-
+    <div class="col-12 col-lg-4 pb-4">
+        <div class="row text-center">
+            <div class="col">
+                <a href="{{ fotos.url }}" target="_blank">
+                    <img class="w-100" src="{{ fotos.url }}" alt="foto">
+                </a>
+            </div>
+        </div>
     </div>
     {% endfor %}
 
-    <a href="#">
-        <button id="apodsearchbtn" title="Voltar ao topo"><i class="fa fa-angle-up"></i></button>
-    </a>
-    
 </div>
+
+<div class="row text-center">
+    <a href="">
+        <button class="btn btn-outline-primary" title="Voltar ao topo"><i class="fa fa-angle-up"></i></button>
+    </a>
+</div>
+
 
 {% endblock %}
